@@ -4,13 +4,12 @@ public class Node<T extends Comparable<T>>
 {
 	private Node<T> left;
 	private Node<T> right;
-	public String english;
-	public String spanish;
+	public T Data;
 
-	public Node(Node<T> rightnode, Node<T> Leftnode, String EnglishTanslation, String SpanishTranslation)
+
+	public Node(Node<T> rightnode, Node<T> Leftnode, T data)
 	{
-		english = EnglishTanslation.toLowerCase();
-		spanish = SpanishTranslation.toLowerCase();
+		Data = data;
 		setleftNode(Leftnode);
 		setrightNode(rightnode);
 	}
@@ -18,7 +17,7 @@ public class Node<T extends Comparable<T>>
 	public boolean setrightNode(Node<T> rightNode)
 	{
 		if (rightNode == null) right = null;
-		if (rightNode.spanish.compareTo(spanish) > 0)
+		if (rightNode.compareTo(this) > 0)
 		{
 			right = rightNode;
 			return true;
@@ -29,7 +28,7 @@ public class Node<T extends Comparable<T>>
 	public boolean setleftNode(Node<T> leftNode)
 	{
 		if (leftNode == null) left = null;
-		if (leftNode.spanish.compareTo(spanish) < 0)
+		if (leftNode.compareTo(this) < 0)
 		{
 			left = leftNode;
 			return true;
@@ -49,7 +48,7 @@ public class Node<T extends Comparable<T>>
 
 	public int compareTo(Node<T> node)
 	{
-		return spanish.compareTo(node.spanish);
+		return Data.compareTo(node.Data);
 	}
 
 }
